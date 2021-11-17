@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+nav {
+    height: 55px;
+    background-color: #aaaaaa;
+    display: flex;
+}
+nav > div {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#icons div {
+    margin-right: 4px;
+}
+main {
+    flex: 1;
+    background-color: red;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+main > div {
+    flex: 1;
+    max-width: 1000px;
+    background-color: blue;
+}
+footer {
+    height: 100px;
+    background-color: blue;
+}
+
+/* @media screen and (max-width: 1024px) {
+} */
