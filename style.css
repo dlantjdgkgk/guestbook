@@ -15,12 +15,18 @@ body {
     margin: 0;
     box-sizing: border-box;
     font-family: 'Nanum Gothic', sans-serif;
+    background: #000000 url(https://image.ibb.co/iAH8YT/ANIbg.gif) scroll repeat;
+    color: #ffffff;
+    font: 12pt 'Comic Sans MS';
+    text-align: center;
 }
-
+li {
+    list-style: none;
+}
 .wrapper {
     width: 500px;
-    height: 600px;
-    border: 1px solid black;
+    height: 800px;
+    border: 1px solid red !important;
     border-radius: 10px;
 }
 .guestbook {
@@ -34,7 +40,7 @@ body {
 }
 #guestbookMent {
     width: 300px;
-    height: 150px;
+    height: 100px;
     text-align: center;
     font-size: 20px;
 }
@@ -58,18 +64,42 @@ body {
     color: var(--white);
 }
 
-.guestbookList {
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+li {
     margin-top: 30px;
     width: 300px;
     height: 100px;
-    border: 1px solid black;
+    border: 1px solid red;
     border-radius: 10px;
+    padding: 0;
 }
-.guestbookList button {
+
+.box {
+    display: flex;
+    justify-content: flex-start;
+}
+.box span {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.box1 {
+    display: flex;
+    justify-content: flex-end;
+}
+
+ul button {
     width: 75px;
     height: 30px;
     background-color: #45df99;
     font-size: 16px;
     color: var(--black);
     border-radius: 5px;
+    margin-top: 30px;
+    margin-right: 5px;
+    float: right;
 }
