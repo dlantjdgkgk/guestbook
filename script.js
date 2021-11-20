@@ -2,41 +2,59 @@ const $guestbookMent = document.getElementById('guestbookMent');
 const $guestbookName = document.getElementById('guestbookName');
 const $list = document.querySelector('.list');
 const $assignmentButton = document.getElementById('assignment');
-$assignmentButton.addEventListener('click', button);
+$assignmentButton.addEventListener('click', enroll);
 
-const $removeList = document.querySelectorAll('.delete.List');
-for (const $remove of $removeList) {
-    remove.addEventListener(click, deleteList);
+function el(tag) {
+    return document.createElement(tag);
 }
-const $correctList = document.querySelectorAll('.update.List');
-for (const $correct of $correctList) {
-    correct.addEventListener(click, updateList);
-}
+function enroll(event) {
+    const $descriptionSpan = el('span');
+    const descriptionSpanValue = document.createTextNode(
+        $guestbookMent.value + ':' + $guestbookName.value
+    );
+    $descriptionSpan.append(descriptionSpanValue);
+    $descriptionSpan.classList.add('Name_Ment');
 
-function button(event) {
-    enroll($guestbookMent.value, $guestbookName.value);
+    const $box = el('div');
+    $box.classList.add('box');
+    $box.append($descriptionSpan);
+
+    const $box1 = el('div');
+    $box1.classList.add('box1');
+
+    insertButton($box1, 'update', '수정');
+    insertButton($box1, 'delete', '삭제');
+
+    const $li = el('li');
+    $li.append($box, $box1);
+    $list.append($li);
+
     $guestbookMent.value = '';
     $guestbookName.value = '';
 }
 
-function enroll() {
-    const $descriptionSpan = document.createElement('span');
-    $descriptionSpan.innerHTML = text;
-    $descriptionSpan.className = 'Name_Ment';
-    const $li = document.createElement('li');
-    $li.append($descriptionSpan);
-    createList($li, 'update', '수정');
-    createList($li, 'delete', '삭제');
-    $list.append($li);
-}
-
-function createList(parent, feature, name) {
-    const $button = document.createElement('button');
+function insertButton(parent, feature, name) {
+    const $button = el('button');
     const buttonValue = document.createTextNode(name);
     $button.append(buttonValue);
-    $button.className = feature + ' ' + 'List';
+    $button.classList.add(feature, 'List');
     parent.append($button);
+    if (name === '삭제') {
+        $button.addEventListener('click', deleteList);
+    } else {
+        $button.addEventListener('click', updateList);
+    }
+    // [deleteList, updateList].forEach((fn) =>$button.addEventListener('click', fn));
 }
 
-function updateList() {}
-function deleteList() {}
+function updateList(event) {
+    const $li = event.currentTarget.parentElement.parentElement;
+    const $NameMent = $li.querySelector('.Name_Ment');
+    const $name = prompt('이름을 입력해주세요');
+    const $ment = prompt('멘트를 입력해주세요');
+    $NameMent.innerText = $name + ' : ' + $ment;
+}
+
+function deleteList(event) {
+    $list.removeChild(event.currentTarget.parentElement.parentElement);
+}
